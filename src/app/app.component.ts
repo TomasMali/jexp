@@ -97,7 +97,7 @@ uploadUrlPath = 'src/assets/uploads/'
      }
      
      // Sending final file...[can be fixed some more]
-      saveAs(new Blob([outputFile], { type: 'text/csv;charset=utf-8' }), "hello_world.C80");
+      saveAs(new Blob([outputFile], { type: 'text/csv;charset=utf-8' }), "fixed.C80");
    }
    fileReader.readAsText(this.file)
 
