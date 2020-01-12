@@ -1,49 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark ">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand text-center mx-6" href="#" >Sanshi</a> <a class="navbar-brand text-center mx-6" href="#" >Tavola Leo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active mx-1">
-          <button class="btn btn-danger navbar-btn btn-block my-2 my-sm-0" type="submit" [routerLink]="['/home']">Home</button>
-        </li>
-        <li class="nav-item mx-1">
-          <button class="btn btn-primary navbar-btn btn-block my-2 my-sm-0" type="submit" [routerLink]="['/tavole']">Tavole</button>
-        </li>
+    <img class="text-center mr-4 img-responsive rounded-circle" width="90px" height="50px" src="../assets/jexp.jpg">
+
+
+
+
+  <button class="navbar-toggler ml-8" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active mx-1">
+        <button class="btn btn-success navbar-btn btn btn-block my-2 my-sm-0" type="submit"
+          [routerLink]="['/home']">Home</button>
+      </li>
       <li class="nav-item mx-1">
-      <button class="btn btn-success navbar-btn  btn-block my-2 my-sm-0" type="submit" [routerLink]="['/menu']">Menu</button>
-    </li>
-  
-      </ul>
-     
-    </div>
-  </nav>
+        <button class="btn btn-success navbar-btn btn btn-block my-2 my-sm-0" type="submit"
+          [routerLink]="['/tavole']">About</button>
+      </li>
+      <li class="nav-item mx-1">
+        <button class="btn btn-success navbar-btn btn  btn-block my-2 my-sm-0" type="submit"
+          [routerLink]="['/menu']">Contact</button>
+      </li>
 
-
-
-
-<br>
-<br>
-
-<div class="container mt-3">
-    <h2>Custom File</h2>
-    <form>
-      <div class="custom-file mb-3">
-        <input type="file" class="custom-file-input" id="customFile" name="filename" (change)="onFileSelected($event)">
-        <label class="custom-file-label" for="customFile">{{hint}}</label>
-   
-      </div>
-
-    
-      <div class="mt-3" >
-        <button  [disabled]= "file === null" type="submit" class="btn btn-primary" (click)="onUpload()">Send</button>
-      </div>
-    </form>
+    </ul>
   </div>
 
+</nav>
+
+
+
+
+<br>
+  
+<br>
+
+
+<div class="container">
+  <div class="jumbotron">
+
+    <div class="container mt-3">
+      <h2>Modulo di correzione file</h2>
+      <form>
+        <div class="custom-file mb-3">
+          <input type="file" class="custom-file-input" id="customFile" name="filename"
+            (change)="onFileSelected($event)">
+          <label class="custom-file-label" for="customFile">{{hint}}</label>
+        </div>
+        <div class="mt-3">
+          <button type="button" [disabled]="file === null" type="submit" class="btn btn-primary btn-lg" (click)="onUpload()">Send</button>
+        </div>
+      </form>
+    </div>
+
+<br>
+<hr>
+
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+
+<div class="card" >
+  <div class="card-body">
+    <h5 class="card-title">Contenuto del file</h5>
+<br>
+    <pre id="p1" class="card-text"></pre>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+  </div>
+</div>
 
 
 <router-outlet></router-outlet>
+
+<br>
+<br>
