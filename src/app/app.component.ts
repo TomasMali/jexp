@@ -72,7 +72,7 @@ export class AppComponent {
         //###########################################################################################################
         let split: Array<string> = new Array();
         split = null
-        split = currentLine.toString().split("\t");
+        split = currentLine.split("\t");
         iii = iii + 1;
         // preparo il file di output
         // salto la prima riga
@@ -88,7 +88,7 @@ export class AppComponent {
             {
               // record A
               // controllo se ho garanti    break;
-              var nGaranti = parseInt((split[80]).toString().trim())
+              var nGaranti = parseInt((split[80]).trim())
               console.log("\n Iterazione[" + line + "] nGaranti vale :  " + nGaranti + "\n")
               // se ho iterazioni garanti, per trovare l'iterazione successiva devo moltiplicare questo numero
               // per
@@ -96,13 +96,13 @@ export class AppComponent {
               //   var posDau = 81;
               var posGaranti = 80
               // trovo iterazione successiva (Dau)
-              var posDau = this.findNextIteration(parseInt(split[posGaranti].trim()), 10, posGaranti);
+              var posDau = this.findNextIteration(parseInt((split[posGaranti]).trim()), 10, posGaranti);
               // trovo iterazione successiva (Trasporto)
-              var posTrasporto = this.findNextIteration(parseInt(split[posDau].trim()), 3, posDau);
+              var posTrasporto = this.findNextIteration(parseInt((split[posDau]).trim()), 3, posDau);
               // trovo iterazione successiva (Certificati)
-              var posCert = this.findNextIteration(parseInt(split[posTrasporto].trim()), 9, posTrasporto);
+              var posCert = this.findNextIteration(parseInt((split[posTrasporto]).trim()), 9, posTrasporto);
               // controllo iterazioni Certificati
-              var nCert = parseInt((split[posCert]).toString().trim());
+              var nCert = parseInt((split[posCert]).trim());
               // intanto mi salvo i dati fino a qui.
               for (var j1 = 0; j1 <= posCert; j1++) {
                 //  console.log("######  Sono in FOR: " + iii + " e split[j1] vale PRIMA DEL METODO: \n" + currentLine+ "\n")
@@ -133,7 +133,7 @@ export class AppComponent {
           default:
             {
               // code block
-              if (currentLine.toString().trim() !== "") {
+              if (currentLine.trim() !== "") {
                 finalLine = finalLine + (split[0] + "\t" + split[1] + "\t" + this.elabRecordC(2, split))
                 outputFile = outputFile + finalLine
               }
@@ -156,7 +156,7 @@ export class AppComponent {
       finalC = finalC + (split_N[i1] + "\t");
     }
     // leggo quanti imballaggi ho
-    var nImba = parseInt(split_N[posImba].toString().trim());
+    var nImba = parseInt(split_N[posImba].trim());
     var posVino = posImba + 1;
     // se ho imballaggi devo andare ad aggiornare il tracciato
     if (nImba > 0) {
