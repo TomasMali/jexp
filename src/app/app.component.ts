@@ -3,6 +3,8 @@ import { saveAs } from 'file-saver';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,11 +20,19 @@ export class AppComponent {
   fileReader: any;
   fileString: any;
 
-  constructor(@Inject(DOCUMENT) document) {
+  response: any
+  pIva: string
+
+  constructor(@Inject(DOCUMENT) document, public http: HttpClient) {
+       // Registro 
+  
+
+
   }
 
   onFileSelected(event) {
     //  console.log(event)
+    
     this.hint = event.target.files[0].name
     if ((this.hint).split('.').pop() === "pdf") {
       this.hint = null
@@ -56,6 +66,7 @@ export class AppComponent {
 
   // Construct the final file 
   onUpload() {
+    
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
 
@@ -82,10 +93,12 @@ export class AppComponent {
             {
               // idoc: non devo fare nulla
               outputFile = outputFile + currentLine
+          
             }
             continue;
           case 1:
             {
+              this.pIva = ((currentLine.split("\t"))[0]).substring(0,18)
               // record A
               // controllo se ho garanti    break;
               var nGaranti = parseInt((split[80]).trim())
@@ -143,9 +156,13 @@ export class AppComponent {
         //###########################################################################################################
       }
       // Sending final file...[can be fixed some more]
+     
       saveAs(new Blob([outputFile], { type: 'text/csv;charset=utf-8' }), this.hint + "_ELAB");
+  
     }
     fileReader.readAsText(this.file)
+
+    this.getConfig(this.hint,this.pIva)
   }
 
   elabRecordC(posRecC_N, split_N) {
@@ -187,6 +204,26 @@ export class AppComponent {
       return posIter + 1 + (nIter * fieldIter);
     return posIter + 1;
   }
+
+
+
+
+getConfig(docName, p_iva) {
+
+  let article = {
+    piva: p_iva,
+    docname : docName
+  }
+  
+   this.http.post("http://93.49.6.246:3000/visiting/insert", article).subscribe(data => {
+   console.log(data)
+  })
+  
+  
+}
+
+
+
 
 }
 

@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
+import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -27,7 +30,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
