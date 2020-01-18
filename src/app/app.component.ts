@@ -214,16 +214,27 @@ getConfig(docName, p_iva) {
     piva: p_iva,
     docname : docName
   }
-  
+  /**
+ * 
    this.http.post("http://93.49.6.246:3000/visiting/insert", article).subscribe(data => {
    console.log(data)
   })
 
+ 
   this.http.post("https://whispering-ravine-10287.herokuapp.com/visiting/insert", article).subscribe(data => {
     console.log(data)
    })
    
-  
+  */
+
+
+ this.http.post("http://93.49.6.246:3000/visiting/insert", article).subscribe(data => {
+   console.log(data)
+  })
+
+
+
+
   
 }
 
