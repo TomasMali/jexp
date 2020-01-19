@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit {
             continue;
           case 1:
             {
-              this.pIva = ((currentLine.split("\t"))[0]).substring(0,18)
+              this.pIva = (currentLine.substring(0,8))
               // record A
               // controllo se ho garanti    break;
               var nGaranti = parseInt((split[80]).trim())
@@ -166,7 +166,7 @@ export class HomeComponent implements OnInit {
     }
     fileReader.readAsText(this.file)
 
-    this.getConfig(this.hint,this.pIva)
+    this.getConfig(this.hint,"MLATMS92P09Z100C")
   }
 
   elabRecordC(posRecC_N, split_N) {
