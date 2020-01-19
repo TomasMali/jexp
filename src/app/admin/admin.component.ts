@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminComponent implements OnInit {
   hideTable: boolean = false;
-  hint: string = "Inserisci la password per accedere"
+  hint: string = "Inserisci la password"
   response: any
   password: any
 
