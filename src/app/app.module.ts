@@ -6,13 +6,12 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
-import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 
-
+import {FormsModule} from "@angular/forms"
 
 
 
@@ -24,6 +23,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'contact', component: ContactComponent }
 ];
+
 
 
 
@@ -41,6 +41,7 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

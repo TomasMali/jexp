@@ -6,24 +6,26 @@
 
 
     <div class="container p-4">
-      
+        
+      <form>
             <div class="row center">
                 <div class="col-10 ">
                     <input type="password" class="form-control " placeholder="{{hint}}"
-                        name="text" id="myInput" (change)="onPasswordEntered($event)">
+                        name="text" id="myInput" [(ngModel)]="password" >
                 </div>
                 <div class="col-2 pl-0">
-                    <button type="submit" class="btn btn-secondary" (click)="authentication($event)">Submit</button>
+                    <button type="submit" [disabled]="password == null " class="btn btn-secondary" (click)="authenticationButton()">Submit</button>
                 </div>
             </div>
-        
+          
+          </form>
     </div>
 
 <br> <br>
 
 
 <div class="container"  *ngIf="hideTable">
-    <table class="table table-hover table-striped">
+    <table class="table table-responsive table-hover table-striped">
 
       <thead class="table-dark ">
         <tr>

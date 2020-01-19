@@ -9,9 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class AdminComponent implements OnInit {
   hideTable: boolean = false;
   hint: string = "Inserisci la password per accedere"
-  pass: string = ""
-  button_w: boolean = false
   response: any
+  password: any
 
     constructor(public http: HttpClient) {
    }
@@ -19,11 +18,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
-  onPasswordEntered(event){
-    this.pass = event.target.value
-  }
-
-  authentication(event){
+ 
+  authenticationButton(){
 
 
     this.http.get("http://93.49.6.246:3000/visiting").subscribe(data => {
@@ -33,16 +29,17 @@ export class AdminComponent implements OnInit {
      })
 
 
-    if(this.pass == "sanmarco"){
+    if(this.password == "sanmarco"){
       this.hideTable = true
+      this.password = ""
     }
-    else if(this.pass == ""){
+    else if(this.password == ""){
       alert("Compila il campo password!")
     }
     else
     alert("Password non valido!")
     
-     event.stopPropagation()
+  
   }
 
 
