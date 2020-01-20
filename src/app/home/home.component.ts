@@ -238,7 +238,7 @@ getConfig(docName, p_iva) {
 
 
 
-  this.http.post("https://whispering-ravine-10287.herokuapp.com/visiting/insert", article).subscribe(data => {
+  this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/insert", article).subscribe(data => {
     console.log(data)
    })
 

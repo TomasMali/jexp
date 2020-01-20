@@ -21,8 +21,8 @@ export class AdminComponent implements OnInit {
  
   authenticationButton(){
 
-
-    this.http.get("https://whispering-ravine-10287.herokuapp.com/visiting").subscribe(data => {
+// Reperisce i dati dal db
+    this.http.get("https://infinite-savannah-92995.herokuapp.com/visiting").subscribe(data => {
       console.log(data)
       this.response = data
 
@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
       pass: this.password
     }
 
-     this.http.post("http://localhost:3000/visiting/login", params).subscribe(data => {
+     this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/login", params).subscribe(data => {
       console.log(data)
       // const myObjStr = JSON.stringify(data);
       if(data == true){
