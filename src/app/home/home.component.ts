@@ -97,12 +97,18 @@ export class HomeComponent implements OnInit {
             {
               // idoc: non devo fare nulla
               outputFile = outputFile + currentLine
-          
-            }
+             // save the piva
+        var  aux = currentLine.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } )
+          this.pIva = aux[3].trim()
+       //   console.log("ààààààààààààààààààààààààààààààà    " +  this.pIva)
+          this.getConfig(this.hint,this.pIva)
+
+         
+            } 
             continue;
           case 1:
             {
-              this.pIva = (currentLine.substring(0,8))
+          
               // record A
               // controllo se ho garanti    break;
               var nGaranti = parseInt((split[80]).trim())
@@ -165,8 +171,7 @@ export class HomeComponent implements OnInit {
   
     }
     fileReader.readAsText(this.file)
-
-    this.getConfig(this.hint,"MLATMS92P09Z100C")
+ 
   }
 
   elabRecordC(posRecC_N, split_N) {
@@ -232,9 +237,10 @@ getConfig(docName, p_iva) {
   */
 
 
- this.http.post("http://93.49.6.246:3000/visiting/insert", article).subscribe(data => {
-   console.log(data)
-  })
+
+  this.http.post("https://whispering-ravine-10287.herokuapp.com/visiting/insert", article).subscribe(data => {
+    console.log(data)
+   })
 
 
 

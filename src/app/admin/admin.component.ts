@@ -22,23 +22,28 @@ export class AdminComponent implements OnInit {
   authenticationButton(){
 
 
-    this.http.get("http://93.49.6.246:3000/visiting").subscribe(data => {
+    this.http.get("https://whispering-ravine-10287.herokuapp.com/visiting").subscribe(data => {
       console.log(data)
       this.response = data
 
      })
 
+     let params = {
+      pass: this.password
+    }
 
-    if(this.password == "sanmarco"){
-      this.hideTable = true
-      this.password = ""
-    }
-    else if(this.password == ""){
-      alert("Compila il campo password!")
-    }
-    else
-    alert("Password non valido!")
-    
+     this.http.post("http://localhost:3000/visiting/login", params).subscribe(data => {
+      console.log(data)
+      // const myObjStr = JSON.stringify(data);
+      if(data == true){
+        this.hideTable = true
+        this.password = ""
+      }
+      else
+      alert("Password non valido!!!")
+      
+     });
+  
   
   }
 
