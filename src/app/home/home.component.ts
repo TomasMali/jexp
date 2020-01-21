@@ -28,15 +28,9 @@ export class HomeComponent implements OnInit {
   pIva: string
 
   constructor(@Inject(DOCUMENT) document, public http: HttpClient) {
-       // Registro 
-  
-
-
   }
 
   onFileSelected(event) {
-    //  console.log(event)
-    
     this.hint = event.target.files[0].name
     if ((this.hint).split('.').pop() === "pdf") {
       this.hint = null
@@ -52,13 +46,11 @@ export class HomeComponent implements OnInit {
   onText() {
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
-
       // Entire file
       var fileAsString = (<String>(fileReader.result)).split('\n')
       var outputFile = ""
       // Read line by line and construct file
       for (var line = 0; line < fileAsString.length; line++) {
-        //    console.log(line + '\n');
         //Adding whatever you wish   
         outputFile = outputFile + fileAsString[line] + '\n'
       }
@@ -67,21 +59,16 @@ export class HomeComponent implements OnInit {
     fileReader.readAsText(this.file)
   }
 
-
   // Construct the final file 
   onUpload() {
-    
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
-
       // Entire file as string[]
       var fileAsArrayString = (<string>(fileReader.result)).split('\n')
       var outputFile = ""
       var iii = -1
-
       // Read line by line and construct file
       for (var line = 0; line < fileAsArrayString.length; line++) {
-
         var finalLine = ""
         var currentLine = fileAsArrayString[line]
         //###########################################################################################################
@@ -91,24 +78,19 @@ export class HomeComponent implements OnInit {
         iii = iii + 1;
         // preparo il file di output
         // salto la prima riga
-        //   console.log("Prima dello switch i vale: " + iii)
         switch (iii) {
           case 0:
             {
               // idoc: non devo fare nulla
               outputFile = outputFile + currentLine
-             // save the piva
-        var  aux = currentLine.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } )
-          this.pIva = aux[3].trim()
-       //   console.log("ààààààààààààààààààààààààààààààà    " +  this.pIva)
-          this.getConfig(this.hint,this.pIva)
-
-         
-            } 
+              // save the piva
+              var aux = currentLine.split(/(\s+)/).filter(function (e) { return e.trim().length > 0; })
+              this.pIva = aux[3].trim()
+              this.getConfig(this.hint, this.pIva)
+            }
             continue;
           case 1:
             {
-          
               // record A
               // controllo se ho garanti    break;
               var nGaranti = parseInt((split[80]).trim())
@@ -166,12 +148,10 @@ export class HomeComponent implements OnInit {
         //###########################################################################################################
       }
       // Sending final file...[can be fixed some more]
-     
       saveAs(new Blob([outputFile], { type: 'text/csv;charset=utf-8' }), this.hint + "_ELAB");
-  
+
     }
     fileReader.readAsText(this.file)
- 
   }
 
   elabRecordC(posRecC_N, split_N) {
@@ -214,39 +194,23 @@ export class HomeComponent implements OnInit {
     return posIter + 1;
   }
 
-
-
-
-getConfig(docName, p_iva) {
-
-  let article = {
-    piva: p_iva,
-    docname : docName
+  getConfig(docName, p_iva) {
+    let article = {
+      piva: p_iva,
+      docname: docName
+    }
+    /**
+   * 
+     this.http.post("http://93.49.6.246:3000/visiting/insert", article).subscribe(data => {
+     console.log(data)
+    })
+    this.http.post("https://whispering-ravine-10287.herokuapp.com/visiting/insert", article).subscribe(data => {
+      console.log(data)
+     })
+    */
+    this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/insert", article).subscribe(data => {
+      console.log(data)
+    })
   }
-  /**
- * 
-   this.http.post("http://93.49.6.246:3000/visiting/insert", article).subscribe(data => {
-   console.log(data)
-  })
-
- 
-  this.http.post("https://whispering-ravine-10287.herokuapp.com/visiting/insert", article).subscribe(data => {
-    console.log(data)
-   })
-   
-  */
-
-
-
-  this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/insert", article).subscribe(data => {
-    console.log(data)
-   })
-
-
-
-
-  
-}
-
 
 }

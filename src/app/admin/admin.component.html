@@ -1,31 +1,32 @@
 <div class="jumbotron mt-3">
 
-    <h4 class="text-center"> Acceso riservato all'utente amministratore! <i class="fas fa-user-lock"></i> </h4>
-    <br>
-    <div class="container p-4">
-        
-      <form>
-            <div class="row center">
-                <div class="col-9 ">
-                    <input type="password" class="form-control " placeholder="{{hint}}"
-                        name="text" id="myInput" [(ngModel)]="password" >
-                </div>
-                <div class="col-2 pl-0">
-                    <button type="submit" [disabled]="password == null " class="btn btn-secondary" (click)="authenticationButton()">Submit</button>
-                </div>
-            </div>
-          
-          </form>
-    </div>
+  <h4 class="text-center"> Acceso riservato all'utente amministratore! <i class="fas fa-user-lock"></i> </h4>
+  <br>
+  <div class="container p-4">
 
-<br> <br>
+    <form>
+      <div class="row center">
+        <div class="col-9 ">
+          <input type="password" class="form-control " placeholder="{{hint}}" name="text" id="myInput"
+            [(ngModel)]="password">
+        </div>
+        <div class="col-2 pl-0">
+          <button type="submit" [disabled]="password == null " class="btn btn-secondary"
+            (click)="authenticationButton()">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <br> <br>
 
 
-<div class="container"  *ngIf="hideTable">
+  <div class="container" *ngIf="hideTable">
     <table class="table table-sm  table-responsive table-hover table-striped">
 
       <thead class="table-dark text-center">
-        <tr >
+        <tr>
           <th>P.IVA</th>
           <th>File</th>
           <th>TotDoc</th>
@@ -39,19 +40,14 @@
           <th></th>
           <th class="text-center">{{item_list.visitTot}}</th>
           <th></th>
-      </tr>
+        </tr>
         <tr *ngFor="let item of item_list.DOCS; let j = index">
           <td>{{item_list.PIVA}}</td>
           <td>{{item.name}}</td>
           <td></td>
           <td>{{item.dataInsert}}</td>
         </tr>
-
       </tbody>
     </table>
   </div>
-
-
-
-
 </div>

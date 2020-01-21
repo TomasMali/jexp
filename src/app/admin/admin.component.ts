@@ -12,49 +12,33 @@ export class AdminComponent implements OnInit {
   response: any
   password: any
 
-    constructor(public http: HttpClient) {
-   }
+  constructor(public http: HttpClient) {
+  }
 
   ngOnInit() {
   }
 
- 
-  authenticationButton(){
 
-// Reperisce i dati dal db
+  authenticationButton() {
+    // Reperisce i dati dal db
     this.http.get("https://infinite-savannah-92995.herokuapp.com/visiting").subscribe(data => {
       console.log(data)
       this.response = data
+    })
 
-     })
-
-     let params = {
+    let params = {
       pass: this.password
     }
 
-     this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/login", params).subscribe(data => {
+    this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/login", params).subscribe(data => {
       console.log(data)
-      // const myObjStr = JSON.stringify(data);
-      if(data == true){
+      if (data == true) {
         this.hideTable = true
         this.password = ""
       }
       else
-      alert("Password non valido!!!")
-      
-     });
-  
-  
+        alert("Password non valido!!!")
+    });
   }
-
-
-
-
-
-
-
-
-
-  
 
 }
