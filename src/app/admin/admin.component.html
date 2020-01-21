@@ -22,7 +22,7 @@
 
 
 <div class="container"  *ngIf="hideTable">
-    <table class="table table-bordered table-responsive table-hover table-striped">
+    <table class="table table-sm table-bordered table-responsive table-hover table-striped">
 
       <thead class="table-dark text-center">
         <tr >
@@ -35,10 +35,10 @@
 
       <tbody class="text-center" *ngFor="let item_list of response.message; let i = index">
         <tr class="table table-info">
-        <th class="text-center"> {{item_list.PIVA}} </th>
-        <th></th>
-        <th class="text-center">{{item_list.visitTot}}</th>
-        <th></th>
+          <th class="text-center"> {{item_list.PIVA}} </th>
+          <th></th>
+          <th class="text-center">{{item_list.visitTot}}</th>
+          <th></th>
       </tr>
         <tr *ngFor="let item of item_list.DOCS; let j = index">
           <td>{{item_list.PIVA}}</td>
