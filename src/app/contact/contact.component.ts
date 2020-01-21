@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormsModule} from "@angular/forms"
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -7,7 +8,9 @@ import {FormsModule} from "@angular/forms"
 })
 export class ContactComponent implements OnInit {
 name: any
-  constructor() { }
+email: any
+emailtext: any
+  constructor(public http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -15,6 +18,39 @@ name: any
 
   call(){
     console.log(this.name)
-    this.name= "Ciao"
+ 
+    let params = {
+      name: this.name,
+      email: this.email,
+      emailtext: this.emailtext
+    }
+
+    this.http.post("https://infinite-savannah-92995.herokuapp.com/email/send", params).subscribe(data => {
+      console.log(data)
+      if (data == true) {
+        alert("Email inviato!")
+        this.name= ""
+        this.email= ""
+        this.emailtext = ""
+      }                                      
+      else
+        {
+          this.http.post("http://93.49.6.246:3000/email/send", params).subscribe(data => {
+            console.log(data)
+            if (data == true) {
+              alert("Email inviato!")
+              this.name= ""
+              this.email= ""
+              this.emailtext = ""
+            }
+            else
+              alert("Email non inviato!!!")
+          });
+        }
+    });
+
+
+
+
   }
 }
