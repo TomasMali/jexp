@@ -32,9 +32,10 @@ export class HomeComponent implements OnInit {
 
   onFileSelected(event) {
     this.hint = event.target.files[0].name
-    if ((this.hint).split('.').pop() === "pdf") {
+    const ext = (this.hint).split('.').pop()
+    if (((this.hint).split('.').pop())[0] !== "C") {
       this.hint = null
-      alert("Estensione file non permesso! Selezionare un file compatibile")
+      alert('L\'estensione ".' + ext + '" del file inserito non permesso! I file compatibili sono quelli che presentano estensione da "C00" a "CZZ".')
       // document.getElementById("openModalButton").click(); 
     } else {
       // The file content itself
@@ -49,6 +50,16 @@ export class HomeComponent implements OnInit {
       // Entire file
       var fileAsString = (<String>(fileReader.result)).split('\n')
       var outputFile = ""
+
+      // Controlla che inizi sempre per IE815
+if(fileAsString[1].substring(0,5) !== "IE815"){
+  console.log(fileAsString[1].substring(0,4))
+  document.getElementById("p1").innerHTML = ""
+  alert("File con record sbagliato")
+  return
+}
+
+
       // Read line by line and construct file
       for (var line = 0; line < fileAsString.length; line++) {
         //Adding whatever you wish   
