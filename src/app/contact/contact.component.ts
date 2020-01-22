@@ -52,13 +52,15 @@ emailtext: any
               this.emailtext = ""
             }
             else
-              alert("Email non inviato!!!")
+           {
+            alert("Email inviato!!!")
+            this.name= ""
+            this.email= ""
+            this.emailtext = ""
+           }
           });
         }
-        alert("Email inviato!!!")
-        this.name= ""
-        this.email= ""
-        this.emailtext = ""
+    
     });
 
 
