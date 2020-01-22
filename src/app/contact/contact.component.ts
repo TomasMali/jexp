@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormsModule} from "@angular/forms"
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+const url_heroku = "https://infinite-savannah-92995.herokuapp.com/email/send";
+const url_pi = "http://93.49.6.246:3000/email/send";
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -25,7 +27,7 @@ emailtext: any
       emailtext: this.emailtext
     }
 
-    this.http.post("https://infinite-savannah-92995.herokuapp.com/email/send", params).subscribe(data => {
+    this.http.post(url_pi, params).subscribe(data => {
       console.log(data)
       if (data == true) {
         alert("Email inviato!")
@@ -35,7 +37,12 @@ emailtext: any
       }                                      
       else
         {
-          this.http.post("http://93.49.6.246:3000/email/send", params).subscribe(data => {
+          this.http.post(url_heroku, params,  
+          {
+            headers: new HttpHeaders().set('Content-Type', 'application/json'),
+            responseType: 'json' 
+         }      
+          ).subscribe(data => {
             console.log(data)
             if (data == true) {
               alert("Email inviato!")
@@ -47,6 +54,7 @@ emailtext: any
               alert("Email non inviato!!!")
           });
         }
+        alert("Email inviato!!!")
     });
 
 
