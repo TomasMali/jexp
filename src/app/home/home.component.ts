@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   hint = "Choose file"
   fileUploadedContent = ""
   file: File = null
+  valid: boolean = true
 
   uploadUrlPath = 'src/assets/uploads/'
   fileReader: any;
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
     if (((this.hint).split('.').pop())[0] !== "C") {
       this.hint = null
       alert('L\'estensione ".' + ext + '" del file inserito non permesso! I file compatibili sono quelli che presentano estensione da "C00" a "CZZ".')
+      return
       // document.getElementById("openModalButton").click(); 
     } else {
       // The file content itself
@@ -52,13 +54,13 @@ export class HomeComponent implements OnInit {
       var outputFile = ""
 
       // Controlla che inizi sempre per IE815
-if(fileAsString[1].substring(0,5) !== "IE815"){
-  console.log(fileAsString[1].substring(0,4))
-  document.getElementById("p1").innerHTML = ""
-  alert("File con record sbagliato")
-  return
-}
-
+      if (fileAsString[1].substring(0, 5) !== "IE815") {
+        this.file = null
+     //   console.log(fileAsString[1].substring(0, 4))
+        document.getElementById("p1").innerHTML = ""
+        alert("File con processabile. E' richiesto un file facente riferimento ad una bozza E-Ad.")
+        return
+      }
 
       // Read line by line and construct file
       for (var line = 0; line < fileAsString.length; line++) {
@@ -105,7 +107,7 @@ if(fileAsString[1].substring(0,5) !== "IE815"){
               // record A
               // controllo se ho garanti    break;
               var nGaranti = parseInt((split[80]).trim())
-              console.log("\n Iterazione[" + line + "] nGaranti vale :  " + nGaranti + "\n")
+            //  console.log("\n Iterazione[" + line + "] nGaranti vale :  " + nGaranti + "\n")
               // se ho iterazioni garanti, per trovare l'iterazione successiva devo moltiplicare questo numero
               // per
               // i campi da saltare
@@ -220,7 +222,7 @@ if(fileAsString[1].substring(0,5) !== "IE815"){
      })
     */
     this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/insert", article).subscribe(data => {
-      console.log(data)
+      console.log("visiting/insert done")
     })
   }
 

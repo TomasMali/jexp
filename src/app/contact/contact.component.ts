@@ -19,7 +19,7 @@ emailtext: any
 
 
   call(){
-    console.log(this.name)
+  //  console.log(this.name)
  
     let params = {
       name: this.name,
@@ -28,7 +28,6 @@ emailtext: any
     }
 
     this.http.post(url_heroku, params).subscribe(data => {
-      console.log(data)
       if (data == true) {
         alert("Email inviato!")
         this.name= ""
@@ -44,7 +43,7 @@ emailtext: any
          }
                 
           ).subscribe(data => {
-            console.log(data)
+        //    console.log(data)
             if (data == true) {
               alert("Email inviato!")
               this.name= ""

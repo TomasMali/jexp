@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularUpload';
-  
+   LOGO = "../assets/Sanmarco-informatica_logo.jpg"
   constructor() {
        // Registro 
   }

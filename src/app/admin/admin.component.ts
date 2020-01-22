@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   authenticationButton() {
     // Reperisce i dati dal db
     this.http.get("https://infinite-savannah-92995.herokuapp.com/visiting").subscribe(data => {
-      console.log(data)
+   //   console.log(data)
       this.response = data
     })
 
@@ -31,7 +31,7 @@ export class AdminComponent implements OnInit {
     }
 
     this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/login", params).subscribe(data => {
-      console.log(data)
+  //    console.log(data)
       if (data == true) {
         this.hideTable = true
         this.password = ""
