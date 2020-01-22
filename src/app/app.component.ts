@@ -9,10 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class AppComponent implements OnInit, AfterViewInit{
 
-  ngAfterViewInit() {
- //  this.spinner.hide()
 
-  }
   title = 'angularUpload';
    LOGO = "../assets/Sanmarco-informatica_logo.jpg"
   constructor(private spinner: NgxSpinnerService) {
@@ -20,14 +17,22 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-    /** spinner starts on init */
+    /** spinner starts on init
     this.spinner.show()
 
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
+    
       this.spinner.hide();
     }, 500);
+
+    */
   }
+
+
+  ngAfterViewInit() {
+    //  this.spinner.hide()
+   
+     }
 
 
 
