@@ -27,7 +27,7 @@ emailtext: any
       emailtext: this.emailtext
     }
 
-    this.http.post(url_pi, params).subscribe(data => {
+    this.http.post(url_heroku, params).subscribe(data => {
       console.log(data)
       if (data == true) {
         alert("Email inviato!")
@@ -37,11 +37,12 @@ emailtext: any
       }                                      
       else
         {
-          this.http.post(url_heroku, params,  
+          this.http.post(url_pi, params,  
           {
             headers: new HttpHeaders().set('Content-Type', 'application/json'),
             responseType: 'json' 
-         }      
+         }
+                
           ).subscribe(data => {
             console.log(data)
             if (data == true) {
