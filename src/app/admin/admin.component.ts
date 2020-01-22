@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,7 @@ export class AdminComponent implements OnInit {
   response: any
   password: any
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -20,6 +21,7 @@ export class AdminComponent implements OnInit {
 
 
   authenticationButton() {
+    this.spinner.show();
     // Reperisce i dati dal db
     this.http.get("https://infinite-savannah-92995.herokuapp.com/visiting").subscribe(data => {
    //   console.log(data)
@@ -31,6 +33,7 @@ export class AdminComponent implements OnInit {
     }
 
     this.http.post("https://infinite-savannah-92995.herokuapp.com/visiting/login", params).subscribe(data => {
+      this.spinner.hide();
   //    console.log(data)
       if (data == true) {
         this.hideTable = true

@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 
 import {FormsModule} from "@angular/forms"
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -36,7 +37,8 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
