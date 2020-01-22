@@ -56,6 +56,9 @@ emailtext: any
           });
         }
         alert("Email inviato!!!")
+        this.name= ""
+        this.email= ""
+        this.emailtext = ""
     });
 
 
