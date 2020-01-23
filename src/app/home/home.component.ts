@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   title = 'angularUpload';
-  hint = "Choose file"
+  hint = "Choose file" 
   fileUploadedContent = ""
   file: File = null
   valid: boolean = true
