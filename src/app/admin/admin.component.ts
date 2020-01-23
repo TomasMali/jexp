@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
         this.password = ""
       }
       else
-        alert("Password non valido!!!")
+      alert("Password non valido!!!")
     });
   }
 

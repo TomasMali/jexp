@@ -14,6 +14,8 @@ import { ContactComponent } from './contact/contact.component';
 import {FormsModule} from "@angular/forms"
 import { NgxSpinnerModule } from "ngx-spinner";
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 // 2.
@@ -38,7 +40,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

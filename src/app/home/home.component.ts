@@ -32,11 +32,15 @@ export class HomeComponent implements OnInit {
   }
 
   onFileSelected(event) {
+    
+    
+  
     this.hint = event.target.files[0].name
     const ext = (this.hint).split('.').pop()
-    if (((this.hint).split('.').pop())[0] !== "C") {
+    if (((this.hint).split('.').pop())[0] !== "C" || (((this.hint).split('.').pop())).length >3 ) {
       this.hint = null
       alert('L\'estensione ".' + ext + '" del file inserito non permesso! I file compatibili sono quelli che presentano estensione da "C00" a "CZZ".')
+      window.location.reload();
       return
       // document.getElementById("openModalButton").click(); 
     } else {
@@ -53,12 +57,14 @@ export class HomeComponent implements OnInit {
       var fileAsString = (<String>(fileReader.result)).split('\n')
       var outputFile = ""
 
+    // console.log("Il file con ext è:  "+ fileAsString[0].toString()) 
       // Controlla che inizi sempre per IE815
       if (fileAsString[1].substring(0, 5) !== "IE815") {
         this.file = null
      //   console.log(fileAsString[1].substring(0, 4))
         document.getElementById("p1").innerHTML = ""
-        alert("File con processabile. E' richiesto un file facente riferimento ad una bozza E-Ad.")
+        alert("File non processabile. E' richiesto un file IE815 - Draft DAA Telematico.")
+        window.location.reload();
         return
       }
 

@@ -2,23 +2,23 @@
 
     <h4 class="text-center"> Modulo di correzione file</h4>
     <br>
-    <h6 class="font-italic font-weight-normal ">
-      La seguente pagina permette di caricare dal PC un file di testo valido, visualizzare il contenuto del file
-      attraverso il text box, e una volta inviato con il bottone Send, verrà scaricato un file contenente le correzioni.
-      Il file avrà il nome e l'estensione del file precedentemente caricato più l'aggiunta della stringa "_ELAB".
-      E' possibile caricare il file da correggere attraverso il bottone Browse oppure trascinando direttamente il file
-      nell'area Browse.
-      Il file che verrà scaricato avrà le modifiche opportune dove necessario (aggiunta dei tab), invece rimarrà
-      invariata la prima riga di intestazione.
-    </h6>
-
+    <h5 class="font-italic font-weight-normal ">
+      <p>
+      La seguente pagina permette di elaborare il file IE815 (Draft DAA Telematico) perchè venga accettato dal Servizio telematico doganale.
+      E' possibile effettuare il caricamento attraverso il pulsante 'Browse' o trascinando il file nell'area apposita. Il contenuto del file appena caricato è visualizzabile nell'area sottostante.
+      Cliccando il pulsante Send verrà scaricato il file con le correzioni necessarie. Tale file avrà il nome e l'estensione del file originale con l'aggiunta della stringa '_ELAB', che deve essere rimossa dall'utente. Una volta rinominato il file è necessario firmarlo, tramite il programma di firma in uso, e inviarlo al Servizio telematico doganale per il rilascio dell'ARC.
+     </p>
+    <p>N.B. Nel caso in cui non sia visibile la stringa '_ELAB', che deve essere rimossa, è necessario impostare correttamente le proprietà del PC in uso perchè siano visibili le estensioni dei file. </p>  
+      
+    </h5>
+  <hr>
     <br>
 
     <div class="container mt-3">
       <h5>Upload file</h5>
       <form>
         <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename"
+          <input #fileInput type="file" (click)="fileInput.value = null" value="" class="custom-file-input" id="customFile" name="filename"
             (change)="onFileSelected($event)" >
           <label class="custom-file-label" for="customFile">{{hint}}</label>
           
@@ -32,8 +32,6 @@
 
     <br>
     <hr>
-
-    <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
     <div class="card">
       <div class="card-body">
