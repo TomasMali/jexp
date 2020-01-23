@@ -11,7 +11,7 @@ export class AppComponent implements OnInit, AfterViewInit{
 
 
   title = 'angularUpload';
-   LOGO = "../assets/Sanmarco-informatica_logo.jpg"
+   LOGO = "assets/Sanmarco-informatica_logo.jpg"
   constructor(private spinner: NgxSpinnerService) {
        // Registro 
   }
