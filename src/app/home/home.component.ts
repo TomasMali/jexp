@@ -33,8 +33,6 @@ export class HomeComponent implements OnInit {
 
   onFileSelected(event) {
     
-    
-  
     this.hint = event.target.files[0].name
     const ext = (this.hint).split('.').pop()
     if (((this.hint).split('.').pop())[0] !== "C" || (((this.hint).split('.').pop())).length >3 ) {
@@ -59,7 +57,8 @@ export class HomeComponent implements OnInit {
 
     // console.log("Il file con ext è:  "+ fileAsString[0].toString()) 
       // Controlla che inizi sempre per IE815
-      if (fileAsString[1].substring(0, 5) !== "IE815") {
+      var check = fileAsString[1] == null ? true : false;
+      if (check || fileAsString[1].substring(0, 5) !== "IE815") {
         this.file = null
      //   console.log(fileAsString[1].substring(0, 4))
         document.getElementById("p1").innerHTML = ""
