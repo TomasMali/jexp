@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
     // console.log("Il file con ext è:  "+ fileAsString[0].toString()) 
       // Controlla che inizi sempre per IE815
       var check = fileAsString[1] == null ? true : false;
+ 
       if (check || fileAsString[1].substring(0, 5) !== "IE815") {
         this.file = null
      //   console.log(fileAsString[1].substring(0, 4))
